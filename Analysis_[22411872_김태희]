@@ -1,0 +1,383 @@
+Analysis
+
+Title: WeShare 
+
+22411872 김태희 taehi0303@naver.com
+
+Revision history 26/05/08 1.0 first write
+# 1. Instroduction
+현대 사회에서는 같은 지역에 거주하고 있음에도 이웃 간 교류가 점점 줄어들어 함께 식사하거나 소통할 사람을 찾기 어렵다. 또한 혼자 생활하는 사람들이 증가하면서 사용하지 않는 물건이 생기거나 혼자 구매하기 부담스러운 상품들이 많아지고 있다. 
+
+이러한 문제들을 해결하기 위하여 만들게 된 시스템이 바로 WeShare이다. WeShare은 지역 기반 커뮤니티 플랫폼으로 사용자들이 자신의 동네를 중심으로 물건을 나누고 밥친구나 지역 모임을 찾을 수 있도록 도와주는 시스템이다. 이를 통해 지역 주민 간의 교류를 활성화하고 자원의 효율적인 활용과 생활의 편리함을 제공하는 것을 목표로 한다.
+
+WeShare의 사용자들은 자신의 지역을 설정하여 주변 지역의 게시물과 정보를 확인할 수 있다. 나눔, 판매 게시글을 작성할 수 있으며 원하는 물품이나 모임을 검색하고 거래 또는 참여 신청을 할 수 있다. 또한 게시물을 추천받을 수 있어 보다 편리하게 서비스를 이용할 수 있다.
+
+사용자들은 프로필 및 사용자 평가 기능을 통해 상대방의 평점을 확인할 수 있으며 관리자가 사용자를 검토하여 안전한 커뮤니티 환경을 형성할 수 있다.
+# 2. Use case analysis
+<img width="1079" height="724" alt="Image" src="https://github.com/user-attachments/assets/fe754f48-c389-4998-8dd9-a25bf6574142" />
+
+## Use case #1: Register
+GENERAL CHARACTERISTICS
+* Summary: 사용자가 시스템의 기능을 사용하기 위해 회원으로 등록할 때 사용
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: WeShare시스템이 실행된 상태어야한다
+* Trigger: 로그인 화면에서 회원가입 버튼을 눌렀을 때 
+* Success Post Condition: 회원이 되어 시스템의 기능을 이용할 수 있다
+* Failed Post Condition: 회원이 되지 못해 기능을 이용할 수 없다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 사용자가 회원가입 버튼을 누른다
+2. 아이디, 비밀번호 등 정보를 입력한다
+3. 가입에 성공하면 정보를 저장한다
+4. 로그인 화면으로 전환한다
+5. 회원가입이 성공하면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 3a. 중복된 아이디가 존재하는 경우
+* 3a.1 중복된 아이디가 존재한다는 메세지를 띄운다
+* 3b. 비밀번호와 비밀번호 확인이 다른 경우
+* 3b.1. 비밀번호와 비밀번호 확인이 다르다는 메시지를 띄운다
+* 3c. 비어있는 입력정보가 있는 경우
+* 3c.1. 비어있는 정보를 입력하라는 메시지를 띄운다
+
+RELATED INFORMATION
+* Performance: <=3
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+## Use case #2: Login
+GENERAL CHARACTERISTICS
+* Summary: WeShare을 이용하기 위해 등록된 뢰원인지 확인하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User, Administrator
+* Preconditions: 사용자가 회원가입이 된 상태어야한다
+* Trigger: 로그인 화면에서 정보를 입력하고 로그인 버튼을 눌렀을 떄
+* Success Post Condition: 로그인에 성공하여 시스템의 기능을 이용할 수 있다
+* Failed Post Condition: 로그인에 실패하여 기능을 이용할 수 없다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 로그인 버튼을 누른다
+2. 회원가입에 사용한 정보를 입력한다
+3. 회원이 확인되면 로그인에 성공한다
+4. 메인화면을 띄운다
+5. 로그인이 성공하면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 2a. 아이디 또는 비밀번호가 잘못된 경우
+* 2a.1. 아이디 또는 비밀번호가 틀렸다는 메시지를 띄운다.
+* 2b. 등록된 회원이 아닌 경우
+* 2b.1 등록된 회원이 아니라는 메세지를 띄운다.
+
+RELATED INFORMATION
+* Performance: <=3
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+## Use case #3: Log out
+GENERAL CHARACTERISTICS
+* Summary: 로그아웃 할 떄 사용하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 사용자는 로그인이 된 상태어야 한다
+* Trigger: 로그아웃 버튼을 눌렀을 때
+* Success Post Condition: 로그아웃에 성공하고 권한이 사라진다
+* Failed Post Condition: 로그아웃에 실패한다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 로그아웃 버튼을 누른다
+2. 로그아웃이 성공하면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 1a. 통신에 문제가 있는 경우
+* 1a.1 로그아웃 실패 메세지를 띄운다
+
+RELATED INFORMATION
+* Performance:<=3
+* Frequency: 평균 1번
+* Concurrency: None 
+* Due Date:
+
+## Use case #4: View Profile
+GENERAL CHARACTERISTICS
+* Summary: 자신 또는 다른 사람의 정보를 확인할 때 사용하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 로그인이 된 상태어야 한다
+* Trigger: 자신 또는 상대의 프로필을 눌렀을 때
+* Success Post Condition: 사용자의 정보를 확인할 수 있다
+* Failed Post Condition: 정보를 확인할 수 없다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 정보를 확인할 사용자의 프로필을 누른다
+2. 등록된 사용자의 정보를 띄운다
+3. 정보를 띄우면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 1a. 통신에 문제가 있는 경우
+* 1a.1 에러 메세지를 띄운다
+
+RELATED INFORMATION
+* Performance: <=3
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+## Use case #5: Set Location
+GENERAL CHARACTERISTICS
+* Summary: 사용자의 지역을 설정하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 사용자가 로그인이 된 상태어야 한다
+* Trigger: 사용자가 위치를 설정하려 할 때 
+* Success Post Condition: 지역을 설정한다
+* Failed Post Condition: 지역을 설정하지 못한다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 사용자가 위치 설정 버튼을 누른다
+2. 위치를 선택한다
+3. 성공적으로 위치가 설정되면 끝난다 
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 1a. 통신에 문제가 있는 경우
+* 1a.1 에러 메세지를 띄운다
+
+RELATED INFORMATION
+* Performance: <=1
+* Frequency: 평균 1번
+* Concurrency: None
+* Due Date:
+
+## Use case #6: Upload Post
+GENERAL CHARACTERISTICS
+* Summary: 사용자가 게시물을 올릴 때 사용하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 로그인이 된 상태어야 한다 
+* Trigger: 게시물 등록 버튼을 눌렀을 때
+* Success Post Condition: 게시물이 등록되어 공개된다
+* Failed Post Condition: 게시물이 등록에 실패한다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 게시물 등록 버튼을 누른다
+2. 글을 작성하고 게시 버튼을 누른다
+3. 글이 성공적으로 게시되면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 2a. 글의 제목이나 내용이 비어있는 경우
+* 2a.1 내용을 작성하라는 메세지를 띄운다
+* 2b. 사용자가 등록 취소 버튼을 누른 경우
+* 2b.1. 이전 화면으로 돌아간다
+
+RELATED INFORMATION
+* Performance: <=3
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+## Use case #7: Search Post
+GENERAL CHARACTERISTICS
+* Summary: 글을 검색할 떄 사용하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 사용자는 로그인이 된 상태어야 한다
+* Trigger: 사용자가 검색 버튼을 눌렀을 때
+* Success Post Condition: 검색 결과에 맞는 글을 보여준다
+* Failed Post Condition: 검색에 실패한다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 사용자가 검색 버튼을 누른다
+2. 검색할 값을 입력하고 검색한다
+3. 검색 결과를 화면에 띄운다
+4. 성공적으로 검색이 되면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 1a. 통신에 문제가 있는 경우
+* 1a.1 에러 메세지를 띄운다
+* 2a. 검색 결과가 없는 경우
+* 2a.1 검색 결과가 없다는 화면을 띄운다
+
+RELATED INFORMATION
+* Performance: <=3
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+## Use case #8: Random Post
+GENERAL CHARACTERISTICS
+* Summary: 둘러보기 위해 무작위의 글을 보여주는 기능
+* Scope: WeShare
+* Level: System Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 사용자가 로그인이 된 상태어야 한다
+* Trigger: 새로고침을 눌렀을 떄
+* Success Post Condition: 무작위의 새로운 게시물을 보여준다
+* Failed Post Condition: 무작위 추천에 실패한다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 사용자가 새로고침을 누른다
+2. 무작위 게시물을 띄운다
+3. 성공적으로 게시물이 추천되면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 1a. 통신에 문제가 있는 경우
+* 1a.1 에러 메세지를 띄운다
+
+RELATED INFORMATION
+* Performance: <=2
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+## Use case #9: Trade
+GENERAL CHARACTERISTICS
+* Summary: 게시물 작성자엣게 거래를 신청하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 사용자가 로그인이 된 상태이고 해당 게시물이 존재해야 한다  
+* Trigger: 사용자가 거래 신청 버튼을 누른다
+* Success Post Condition: 작성자에게 거래신청이 된다
+* Failed Post Condition: 거래신청에 실패한다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 원하는 게시물을 누른다
+2. 거래 신청 버튼을 누른다
+3. 성공적으로 신청이 완료되면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 1a. 게시물이 삭제된 경우
+* 1a.1 삭제된 게시물이라는 메세지를 띄우고 이전 화면으로 돌아간다
+
+RELATED INFORMATION
+* Performance: <=1
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+## Use case #10: Review
+GENERAL CHARACTERISTICS
+* Summary: 상대에게 평점과 리뷰를 남길 떄 사용하는 기능
+* Scope: WeShare
+* Level: User Level
+* Author:
+* Last Update:
+* Status: Analysis
+* Primary Actor: User
+* Preconditions: 상대와의 거래가 완료된 상태어야 한다
+* Trigger: 리뷰 작성 버튼을 눌렀을 떄
+* Success Post Condition: 작성한 리뷰가 등록되어 다른 사람들에게 공개된다
+* Failed Post Condition: 리뷰 작성에 실패한다
+
+MAIN SUCCESS SCENARIO
+* Step: Action
+1. 사용자가 리뷰 작성 버튼을 누른다
+2. 별점과 리뷰를 작성하고 등록 버튼을 누른다
+3. 시스템은 리뷰를 저장한다
+4. 성공적으로 리뷰가 작성되면 끝난다
+
+EXTENSION SCENARIOS
+* Step: Branching Action
+* 2a. 글자 수 제한 또는 부적절한 언어를 사용
+* 2a.1 관련 에러 메세지를 띄운다
+
+RELATED INFORMATION
+* Performance: <=1
+* Frequency: Variable
+* Concurrency: None
+* Due Date:
+
+# 3. Domain analysis
+  1) User : 사용자의 정보를 가지는 클래스이다 (id, password..)
+  2) Admin: 사용자 관리의 기능을 한다
+  3) Location: 사용자의 위치 정보를 가진다
+  4) Review: 별점과 글 정보를 가진다 (rate, comment..)
+  5) Post: 등록된 게시물들의 정보를 가진다 (title, content..)
+  6) Trade: 사용자 간 거래를 관리한다 (request, accept..)
+  7) Recommend: 사용자에게 게시물을 추천한다
+  8) Search: 게시물 검색 기능을 한다 (keyword..)
+
+# 4. User interface prototype
+<img width="479" height="847" alt="Image" src="https://github.com/user-attachments/assets/1eb00113-df3c-4136-8e7b-83dfbe8515b1" />
+
+시스템을 실행시키면 나오는 메인화면으로 추천게시물들이 나오며 카테고리별로 분류할 수 있다. 상단에는 사용자의 지역과 검색창이 있고 하단에는 게시물 추가 버튼과 프로필 버튼이 있다.  
+
+<img width="488" height="831" alt="Image" src="https://github.com/user-attachments/assets/4ace274d-57dd-4b74-9f1e-45d794dbd897" />
+
+하단 프로필을 누르면 나타나는 화면이다.
+자신의 게시물 내역과 다른 사용자가 남긴 평점 등을 볼 수 있다. 프로필에서 로그아웃을 할 수 있다.
+
+<img width="306" height="743" alt="Image" src="https://github.com/user-attachments/assets/8ce37d10-92bf-49f6-b33a-ead66b1fb8c0" />
+
+로그인 창이다. 가입된 회원이라면 로그인을 할 수 있고 ㅏ입이 안되어있다면 회원가입 버튼을 누르면 가입을 할 수 있다.
+
+<img width="307" height="748" alt="Image" src="https://github.com/user-attachments/assets/66156b9d-cf9c-4fb5-b8d0-c4e764bcdbcf" />
+
+게시물 등록 창이다. 거래 인지 모임인지 카테고리를 선택할 수 잇으며 제목과 글을 써서 게시물을 등록할 수 있다. 
+
+# 5. Glossary
+* 회원: WeShare에 등록되어 서비스 이용의 대상이 되는 사용자
+* 관리자: 전체 시스템을 관리하는 사용자
+* 카테고리: 게시물을 분류하는 장치
+* 프로필: 회원들의 정보를 확인하는 곳
+# 6. References
+* iOS 기반 사용자 인터페이스 설계 참고
+
+https://developer.apple.com/design/human-interface-guidelines
+* 모바일 앱 UI 및 프로토타입 디자인 참고
+
+https://www.figma.com/community
